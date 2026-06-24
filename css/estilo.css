@@ -11,7 +11,8 @@ header {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    /* Alinha o logo na esquerda e o botão de menu na direita */
+    justify-content: space-between; 
     padding: 40px 100px;
     z-index: 10000;
     transition: 0.6s;
@@ -58,10 +59,12 @@ header .logo {
     z-index: 2;
 }
 
+/* Quando ativo, empurra o conteúdo do site para a direita de forma fluida */
 .banner.active {
     transform: translateX(400px);
 }
 
+/* Configura o menu fixado estritamente no lado esquerdo */
 #navigation {
     position: fixed;
     top: 0;
@@ -70,8 +73,11 @@ header .logo {
     height: 100vh;
     background: #0c79ac;
     z-index: 1;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px 20px;
     transition: 0.5s;
 }
 
@@ -79,11 +85,43 @@ header .logo {
     left: 0;
 }
 
+/* Estilo do cabeçalho/label interna do menu */
+.nav-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.nav-label {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.close-menu {
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-menu:hover {
+    color: #000;
+}
+
 #navigation ul {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
+    padding-left: 20px;
 }
 
 #navigation ul li {
@@ -144,34 +182,6 @@ header .logo {
     background: #000;
 }
 
-/* Menu de link lateral de rede social */
-.sci {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    right: 100px;
-}
-
-.sci li {
-    list-style: none;
-}
-
-.sci li a {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 5px 10px;
-    border-bottom: 2px solid transparent;
-    transition: 0.3s;
-}
-
-.sci li a:hover {
-    color: #0c79ac;
-    border-bottom-color: #0c79ac;
-}
-
 .site-section {
     padding: 80px 100px;
     min-height: 60vh;
@@ -179,6 +189,7 @@ header .logo {
     flex-direction: column;
     justify-content: center;
     background: #fff;
+    transition: 0.5s;
 }
 
 #formacao, #contato {
@@ -331,14 +342,6 @@ header .logo {
 
     #navigation ul li a {
         font-size: 1.4em;
-    }
-
-    .sci {
-        position: absolute;
-        bottom: 40px;
-        flex-direction: row;
-        right: initial;
-        left: 30px;
     }
 
     .site-section {
